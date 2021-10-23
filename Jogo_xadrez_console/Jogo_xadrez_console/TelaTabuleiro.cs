@@ -13,8 +13,8 @@ namespace Jogo_xadrez_console
             Console.WriteLine();
             imprimirPecasCapturadas(partida);
             Console.WriteLine();
-            Console.WriteLine("Turno: " + partida.Turno);
-            Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+            Console.WriteLine(" Turno: " + partida.Turno);
+            Console.WriteLine(" Aguardando jogada: " + partida.JogadorAtual);
             if (partida.Xeque)
             {
                 Console.WriteLine("Xeque");
@@ -24,11 +24,11 @@ namespace Jogo_xadrez_console
 
         public static void imprimirPecasCapturadas(PartidaDeXadres partida)
         {
-            Console.WriteLine("Peças capturadas:");
-            Console.Write("Brancas: ");
+            Console.WriteLine(" Peças capturadas:");
+            Console.Write(" Brancas: ");
             imprimirConjunto(partida.PecasCapturadas(Cor.Branca));
             Console.WriteLine();
-            Console.Write("Pretas: ");
+            Console.Write(" Pretas: ");
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             imprimirConjunto(partida.PecasCapturadas(Cor.Preta));
@@ -49,10 +49,10 @@ namespace Jogo_xadrez_console
 
         public static void imprimirTabuleiro(Tabuleiro tab)
         {
-            Console.WriteLine("        TABULEIRO    ");
+            Console.WriteLine("         TABULEIRO    ");
             for (int i = 0; i < tab.Linhas; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.Write(" " + (8 - i) + " ");
 
                 for (int j = 0; j < tab.Colunas; j++)
                 {
@@ -63,7 +63,7 @@ namespace Jogo_xadrez_console
 
                 Console.WriteLine();
             }
-            Console.WriteLine("\n   A  B  C  D  E  F  G  H ");
+            Console.WriteLine("\n    A  B  C  D  E  F  G  H ");
 
         }
         public static void imprimirTabuleiro(Tabuleiro tab, bool[,] possisoesPossiveis)
@@ -93,7 +93,7 @@ namespace Jogo_xadrez_console
 
                 Console.WriteLine();
             }
-            Console.WriteLine("\n   A  B  C  D  E  F  G  H ");
+            Console.WriteLine("\n    A  B  C  D  E  F  G  H ");
             Console.BackgroundColor = fundoOriginal;
         }
 

@@ -16,22 +16,21 @@ namespace Jogo_xadrez_console
                 {
                     try
                     {
-
                         Console.Clear();
-                        TelaTabuleiro.imprimirPartida(partida);
+                        TelaTabuleiro.imprimirPartida(partida); // cria partida
 
-                        Console.Write("\nOrigem: ");
-                        Posicao origem = TelaTabuleiro.LerPosicaoXadres().ConvertePosicao();
+                        Console.Write("\n Origem: ");
+                        Posicao origem = TelaTabuleiro.LerPosicaoXadres().ConvertePosicao(); // pega posicao de partida da peca
 
-                        partida.ValidarPosicaoDeOrigem(origem);
+                        partida.ValidarPosicaoDeOrigem(origem); 
 
-                        bool[,] posicoesPossiveis = partida.Tabuleiro.RetornaPeca(origem).MovimentosPosiveis();
+                        bool[,] posicoesPossiveis = partida.Tabuleiro.RetornaPeca(origem).MovimentosPosiveis(); // matriz que vai mostrar as possicoes possives por peca e jogada
 
                         Console.Clear();
 
                         TelaTabuleiro.imprimirTabuleiro(partida.Tabuleiro, posicoesPossiveis);
 
-                        Console.Write("Destino: ");
+                        Console.Write(" Destino: ");
                         Posicao destino = TelaTabuleiro.LerPosicaoXadres().ConvertePosicao();
 
                         partida.ValidadarPosicaoDeDestino(origem, destino);

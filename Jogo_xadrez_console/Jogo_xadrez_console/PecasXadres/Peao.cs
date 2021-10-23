@@ -57,20 +57,20 @@ namespace PecasXadres
                     mat[pos.Linha, pos.Coluna] = true;
                 }
 
-                //    // #jogadaespecial en passant
-                //    if (PosicaoPeca.Linha == 3)
-                //    {
-                //        Posicao esquerda = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 1);
-                //        if (tabuleiro.PosicaoValida(esquerda) && existeInimigo(esquerda) && tabuleiro.RetornaPeca(esquerda) == partida.vulneravelEnPassant)
-                //        //{
-                //            //mat[esquerda.Linha - 1, esquerda.Coluna] = true;
-                //        }
-                //        Posicao direita = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 1);
-                //        if (tabuleiro.PosicaoValida(direita) && existeInimigo(direita) && tabuleiro.RetornaPeca(direita) == partida.vulneravelEnPassant)
-                //        {
-                //            mat[direita.Linha - 1, direita.Coluna] = true;
-                //        }
-                //    }
+                // jogada especial en passant
+                if (PosicaoPeca.Linha == 3)
+                {
+                    Posicao esquerda = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 1);
+                    if (tabuleiro.PosicaoValida(esquerda) && existeInimigo(esquerda) && tabuleiro.RetornaPeca(esquerda) == partida.vulneravelEnPassant)
+                    {
+                        mat[esquerda.Linha - 1, esquerda.Coluna] = true;
+                    }
+                    Posicao direita = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 1);
+                    if (tabuleiro.PosicaoValida(direita) && existeInimigo(direita) && tabuleiro.RetornaPeca(direita) == partida.vulneravelEnPassant)
+                    {
+                        mat[direita.Linha - 1, direita.Coluna] = true;
+                    }
+                }
             }
             else
             {
@@ -96,20 +96,20 @@ namespace PecasXadres
                     mat[pos.Linha, pos.Coluna] = true;
                 }
 
-                //    // #jogadaespecial en passant
-                //    if (PosicaoPeca.Linha == 4)
-                //    {
-                //        Posicao esquerda = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 1);
-                //        if (tabuleiro.PosicaoValida(esquerda) && existeInimigo(esquerda) && tabuleiro.RetornaPeca(esquerda) == partida.vulneravelEnPassant)
-                //        {
-                //            mat[esquerda.Linha + 1, esquerda.Coluna] = true;
-                //        }
-                //        Posicao direita = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 1);
-                //        if (tabuleiro.PosicaoValida(direita) && existeInimigo(direita) && tabuleiro.RetornaPeca(direita) == partida.vulneravelEnPassant)
-                //        {
-                //            mat[direita.Linha + 1, direita.Coluna] = true;
-                //        }
-                //    }
+                 // jogada especial en passant
+                if (PosicaoPeca.Linha == 4)
+                {
+                    Posicao esquerda = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 1);
+                    if (tabuleiro.PosicaoValida(esquerda) && existeInimigo(esquerda) && tabuleiro.RetornaPeca(esquerda) == partida.vulneravelEnPassant)
+                    {
+                        mat[esquerda.Linha + 1, esquerda.Coluna] = true;
+                    }
+                    Posicao direita = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 1);
+                    if (tabuleiro.PosicaoValida(direita) && existeInimigo(direita) && tabuleiro.RetornaPeca(direita) == partida.vulneravelEnPassant)
+                    {
+                        mat[direita.Linha + 1, direita.Coluna] = true;
+                    }
+                }
             }
 
             return mat;
@@ -117,4 +117,4 @@ namespace PecasXadres
 
         }
     }
- }
+}

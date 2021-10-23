@@ -13,6 +13,8 @@ namespace PecasXadres
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
         public bool Xeque { get; set; }
+        public Peca vulneravelEnPassant { get;  private set;}
+
         
         public PartidaDeXadres()
         {
@@ -20,6 +22,7 @@ namespace PecasXadres
             Turno = 1;
             JogadorAtual = Cor.Branca;
             Terminada = false;
+            vulneravelEnPassant = null;
             pecas = new HashSet<Peca>();
             capturadas = new HashSet<Peca>();
             Xeque = false;
@@ -168,7 +171,26 @@ namespace PecasXadres
                 Tabuleiro.ColocarPeca(T, destinoTorre);
             }
 
+            // jogada especia en passant
 
+            if(p is Peao)
+            {
+                if(origem.Coluna != destino.Coluna && pecaCapturada == null)
+                {
+                    Posicao pegaPeao;
+                    if (p.Cor == Cor.Branca)
+                    {
+                        pegaPeao = new Posicao(destino.Linha + 1, destino.Coluna);
+
+                    }
+                    else
+                    {
+                        pegaPeao = new Posicao(destino.Linha - 1, destino.Coluna);
+                    }
+                    pecaCapturada = Tabuleiro.RetirarPeca(pegaPeao);
+                    capturadas.Add(pecaCapturada);
+                }
+            }
             return pecaCapturada;
         }
 
@@ -207,8 +229,26 @@ namespace PecasXadres
                 Tabuleiro.ColocarPeca(T, origemTorre);
             }
 
-        }
+            // desfazendo jogada el passant
 
+            if(p is Peao)
+            {
+                if(origem.Coluna != destino.Coluna && capturada == vulneravelEnPassant)
+                {
+                    Peca peao = Tabuleiro.RetirarPeca(destino);
+                    Posicao posicaopeao;
+                    if(p.Cor == Cor.Branca)
+                    {
+                        posicaopeao = new Posicao(3, destino.Coluna);
+                    }
+                    else
+                    {
+                        posicaopeao = new Posicao(4, destino.Coluna);
+                    }
+                    Tabuleiro.ColocarPeca(peao, posicaopeao);
+                }
+            }
+        }
 
         public void RealizaJogada(Posicao origem, Posicao destino)
         {
@@ -221,6 +261,20 @@ namespace PecasXadres
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
 
+            Peca p = Tabuleiro.RetornaPeca(destino);
+
+            // jogada especial promocao
+            if(p is Peao)
+            {
+                if((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7))
+                {
+                    p = Tabuleiro.RetirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(Tabuleiro, p.Cor);
+                    Tabuleiro.ColocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
+            }
             if (EstaEmXeque(Adversaria(JogadorAtual)))
             {
                 Xeque = true;
@@ -237,8 +291,19 @@ namespace PecasXadres
             {
                 Turno++;
                 MudaJogador();
-
             }
+
+            // jogada especial En Passant
+
+            if(p is Peao && (destino.Linha == origem.Linha -2 || destino.Linha == origem.Linha + 2))
+            {
+                vulneravelEnPassant = p;
+            }
+            else
+            {
+                vulneravelEnPassant = null;
+            }
+
         }
 
         public void ValidarPosicaoDeOrigem(Posicao origem)
