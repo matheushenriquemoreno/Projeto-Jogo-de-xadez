@@ -26,7 +26,6 @@
             QuantidadeMovimentos--;
         }
 
-
         public bool existeMovimentosPossiveis()
         {
             bool[,] mat = MovimentosPosiveis();

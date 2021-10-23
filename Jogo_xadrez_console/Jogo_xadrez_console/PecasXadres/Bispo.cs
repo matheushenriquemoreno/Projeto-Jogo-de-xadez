@@ -1,5 +1,4 @@
-﻿
-using tabuleiro;
+﻿using tabuleiro;
 
 namespace PecasXadres
 {
