@@ -27,7 +27,6 @@ namespace Jogo_xadrez_console
 
                         bool[,] posicoesPossiveis = partida.Tabuleiro.RetornaPeca(origem).MovimentosPosiveis();
 
-
                         Console.Clear();
 
                         TelaTabuleiro.imprimirTabuleiro(partida.Tabuleiro, posicoesPossiveis);

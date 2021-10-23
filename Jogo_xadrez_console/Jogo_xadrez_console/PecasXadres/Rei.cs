@@ -2,9 +2,13 @@
 
 namespace PecasXadres
 {
-    class Rei : Peca 
+    class Rei : Peca
     {
-        public Rei(Tabuleiro tab, Cor cor) : base(tab, cor) { } // construtor
+        private PartidaDeXadres _partida;
+        public Rei(Tabuleiro tab, Cor cor, PartidaDeXadres partida) : base(tab, cor)
+        {
+            this._partida = partida;
+        } // construtor
 
         public override string ToString()
         {
@@ -16,6 +20,12 @@ namespace PecasXadres
             Peca rei = tabuleiro.RetornaPeca(pos);
             return rei == null || rei.Cor != Cor;
         }
+        private bool TesteTorreParaRoque(Posicao pos)
+        {
+            Peca p = tabuleiro.RetornaPeca(pos);
+            return p != null && p is Torre && p.Cor == this.Cor && p.QuantidadeMovimentos == 0; // p is Torre = a peça 'p' e uma instacia/subclasse de Torre
+        }
+
 
         public override bool[,] MovimentosPosiveis()
         {
@@ -80,6 +90,39 @@ namespace PecasXadres
             {
                 matriz[pos.Linha, pos.Coluna] = true;
             }
+
+            // Jogada especial Roque
+
+            if (QuantidadeMovimentos == 0 && !_partida.Xeque)
+            {
+                // jogada espcial roque pequeno
+                Posicao posicaoTorre = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 3);
+                if (TesteTorreParaRoque(posicaoTorre))
+                {
+                    Posicao p1 = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 1);
+                    Posicao p2 = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna + 2);
+                    if (tabuleiro.RetornaPeca(p1) == null && tabuleiro.RetornaPeca(p2) == null)
+                    {
+                        matriz[PosicaoPeca.Linha, PosicaoPeca.Coluna + 2] = true;
+                    }
+                }
+            }
+
+            // jogada especial roque grande
+
+            Posicao posicaoTorre2 = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 4);
+            if (TesteTorreParaRoque(posicaoTorre2))
+            {
+                Posicao p1 = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 1);
+                Posicao p2 = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 2);
+                Posicao p3 = new Posicao(PosicaoPeca.Linha, PosicaoPeca.Coluna - 3);
+
+                if (tabuleiro.RetornaPeca(p1) == null && tabuleiro.RetornaPeca(p2) == null && tabuleiro.RetornaPeca(p3) == null)
+                {
+                    matriz[PosicaoPeca.Linha, PosicaoPeca.Coluna - 2] = true;
+                }
+            }
+
 
             return matriz;
         }

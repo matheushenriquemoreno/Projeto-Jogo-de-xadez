@@ -143,6 +143,32 @@ namespace PecasXadres
             {
                 capturadas.Add(pecaCapturada);
             }
+
+            // jogada especial roque pequeno
+
+            if (p is Rei && destino.Coluna == origem.Coluna + 2)
+            {
+                Posicao origemTorre = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoTorre = new Posicao(origem.Linha, origem.Coluna + 1);
+
+                Peca T = Tabuleiro.RetirarPeca(origemTorre);
+                T.IncrementarQtdMovimento();
+                Tabuleiro.ColocarPeca(T, destinoTorre);
+            }
+
+            // jogada especial roque grande
+
+            if (p is Rei && destino.Coluna == origem.Coluna - 2)
+            {
+                Posicao origemTorre = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoTorre = new Posicao(origem.Linha, origem.Coluna - 1);
+
+                Peca T = Tabuleiro.RetirarPeca(origemTorre);
+                T.IncrementarQtdMovimento();
+                Tabuleiro.ColocarPeca(T, destinoTorre);
+            }
+
+
             return pecaCapturada;
         }
 
@@ -156,6 +182,31 @@ namespace PecasXadres
                 capturadas.Remove(capturada);
             }
             Tabuleiro.ColocarPeca(p, origem);
+
+            // desfazendo jogada especial roque pequeno
+
+            if (p is Rei && destino.Coluna == origem.Coluna + 2)
+            {
+                Posicao origemTorre = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoTorre = new Posicao(origem.Linha, origem.Coluna + 1);
+
+                Peca T = Tabuleiro.RetirarPeca(destinoTorre);
+                T.DecrementarQtdMovimentos();
+                Tabuleiro.ColocarPeca(T, origemTorre);
+            }
+
+            // desfazendo jogada especial roque grande
+
+            if (p is Rei && destino.Coluna == origem.Coluna - 2)
+            {
+                Posicao origemTorre = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoTorre = new Posicao(origem.Linha, origem.Coluna - 1);
+
+                Peca T = Tabuleiro.RetirarPeca(destinoTorre);
+                T.IncrementarQtdMovimento();
+                Tabuleiro.ColocarPeca(T, origemTorre);
+            }
+
         }
 
 
@@ -238,7 +289,7 @@ namespace PecasXadres
             colocarNovaPeca('b', 1, new Cavalo(Tabuleiro, Cor.Branca));
             colocarNovaPeca('c', 1, new Bispo(Tabuleiro, Cor.Branca));
             colocarNovaPeca('d', 1, new Dama(Tabuleiro, Cor.Branca));
-            colocarNovaPeca('e', 1, new Rei(Tabuleiro, Cor.Branca));
+            colocarNovaPeca('e', 1, new Rei(Tabuleiro, Cor.Branca, this));
             colocarNovaPeca('f', 1, new Bispo(Tabuleiro, Cor.Branca));
             colocarNovaPeca('g', 1, new Cavalo(Tabuleiro, Cor.Branca));
             colocarNovaPeca('h', 1, new Torre(Tabuleiro, Cor.Branca));
@@ -255,7 +306,7 @@ namespace PecasXadres
             colocarNovaPeca('b', 8, new Cavalo(Tabuleiro, Cor.Preta));
             colocarNovaPeca('c', 8, new Bispo(Tabuleiro, Cor.Preta));
             colocarNovaPeca('d', 8, new Dama(Tabuleiro, Cor.Preta));
-            colocarNovaPeca('e', 8, new Rei(Tabuleiro, Cor.Preta));
+            colocarNovaPeca('e', 8, new Rei(Tabuleiro, Cor.Preta, this));
             colocarNovaPeca('f', 8, new Bispo(Tabuleiro, Cor.Preta));
             colocarNovaPeca('g', 8, new Cavalo(Tabuleiro, Cor.Preta));
             colocarNovaPeca('h', 8, new Torre(Tabuleiro, Cor.Preta));
