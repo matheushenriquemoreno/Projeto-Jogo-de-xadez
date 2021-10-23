@@ -1,0 +1,14 @@
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\bin\Debug\netcoreapp3.1\Jogo_xadrez_console.exe
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\bin\Debug\netcoreapp3.1\Jogo_xadrez_console.deps.json
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\bin\Debug\netcoreapp3.1\Jogo_xadrez_console.runtimeconfig.json
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\bin\Debug\netcoreapp3.1\Jogo_xadrez_console.runtimeconfig.dev.json
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\bin\Debug\netcoreapp3.1\Jogo_xadrez_console.dll
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\bin\Debug\netcoreapp3.1\Jogo_xadrez_console.pdb
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.csproj.AssemblyReference.cache
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.AssemblyInfoInputs.cache
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.AssemblyInfo.cs
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.csproj.CoreCompileInputs.cache
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.dll
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.pdb
+C:\Users\mathe\source\Projeto_jogo_xadrez\Jogo_xadrez_console\Jogo_xadrez_console\obj\Debug\netcoreapp3.1\Jogo_xadrez_console.genruntimeconfig.cache
