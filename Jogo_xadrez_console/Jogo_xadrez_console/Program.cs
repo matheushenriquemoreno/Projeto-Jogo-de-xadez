@@ -30,7 +30,7 @@ namespace Jogo_xadrez_console
 
                         TelaTabuleiro.imprimirTabuleiro(partida.Tabuleiro, posicoesPossiveis);
 
-                        Console.Write(" Destino: ");
+                        Console.Write("\n Destino: ");
                         Posicao destino = TelaTabuleiro.LerPosicaoXadres().ConvertePosicao();
 
                         partida.ValidadarPosicaoDeDestino(origem, destino);
